@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Input Data Report </title>
+    <link rel="stylesheet" href="stylee.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title"style="text-align: center;">Data Report Troubleshoooting</div>
+    <div class="content">
+     <form name="#">
+        <div id="form_alerts"></div>
+        <div class="user-details">
+          <div class="input-box">
+             <label for="Hari/Tanggal" class="form-label">Hari/Tanggal</label>
+              <input type="date" id="Hari/Tanggal" name="Hari/Tanggal" class="form-control" placeholder="Masukan Hari/Tanggal" required>
+          </div>
+          <div class="input-box">
+            <label for="Troubleshooter" class="form-label">Troubleshooter</label>
+              <select type="text" id="Troubleshooter" name="Troubleshooter" class="form-control" placeholder="Pilih Troubleshooter " required>
+                <option>--Pilih Troubleshooter--</option>
+                <option>NURUDIN</option>
+                <option>BUDIMAN</option>
+                <option>RIZKY MUCHIDDIN</option>
+                <option>FARIZ</option>
+                <option>IKBAR</option>
+                <option>TIO</option>
+                <option>IT TEAM</option>
+              </select>
+          </div>
+           <div class="input-box">
+           <label for="User" class="form-label">User</label>
+              <input type="text" id="User" name="User" class="form-control" placeholder="Masukan User " required>
+          </div>
+          <div class="input-box">
+            <label for="Divisi" class="form-label">Divisi</label>
+              <select type="text" id="Divisi" name="Divisi" class="form-control" placeholder="Pilih Divisi " required>
+                <option>--Pilih Divisi--</option>
+                <option>SBU Sertifikasi Kehutanan</option>
+                <option>SBU Sertifikasi Pertanian Industri dan Jasa Publik</option>
+                <option>SBU Sertifikasi Produk Basis Kayu</option>
+                <option>SBU Inspeksi & Solusi Perdagangan</option>
+                <option>SBU Laboratorium</option>
+                <option>Divisi Keuangan & Akuntansi</option>
+                <option>Divisi Pengelolaan SDM & Administrasi</option>
+                <option>Divisi Sistem dan Teknologi Informasi</option>
+                <option>Divisi Pemasaran</option>
+                <option>Divisi Penjaminan Mutu</option>
+                <option>Divisi Business Development</option>
+                <option>Sekretaris Perusahaan</option>
+                <option>Kantor Komunikasi</option>
+                <option>Auditor Center</option>
+                <option>Kantor Cabang</option>
+                <option>Lainnya (Direksi BOD Dewan Pakar)</option>
+                <option>Mutu Institute</option>
+                <option>Mutumed</option>
+              </select>
+          </div>
+          <div class="input-box">
+           <label for="Onsite" class="form-label">Onsite</label>
+              <input type="text" id="Onsite" name="Onsite" class="form-control" placeholder="Masukan Keterangan Onsite " required>
+          </div>
+          <div class="input-box">
+            <label for="Remote" class="form-label">Remote</label>
+              <input type="text" id="Remote" name="Remote" class="form-control" placeholder="Masukan Keterangan Remote " required>
+          </div>
+          <div class="input-box">
+            <label for="Tingkat Kesulitan" class="form-label">Tingkat Kesulitan</label>
+              <select type="text" id="Tingkat Kesulitan" name="Tingkat Kesulitan" class="form-control" placeholder="Pilih Tingkat Kesulitan " required>
+                <option>--Pilih Tingkat Kesulitan--</option>
+                <option>RINGAN</option>
+                <option>SEDANG</option>
+                <option>BERAT</option>
+              </select>
+          </div>
+          <div class="input-box">
+          <label for="Foto" class="form-label">Foto</label>
+              <input type="file" id="Foto" name="Foto" class="form-control" accept="image/jpeg, image/png" required>
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Upload">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyKi5aPb4Jy9j-KFxIGmcmP9qHKuDAezHphvmKXuPWZn0BQPXIA4PJKSIdVKCmMqfnE/exec'
+        const form = document.forms['#']
+        
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => $("#form_alerts").html("<div class='alert alert-success'>Data berhasil dikirim.</div>"))
+            .catch(error => $("#form_alerts").html("<div class='alert alert-danger'>Data gagal terkirim!.</div>"))
+            form.reset();
+        })
+    </script>
+
+</body>
+</html>
